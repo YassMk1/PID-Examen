@@ -43,9 +43,10 @@ public class Artist {
 
 	protected Artist() {}
 
-	public Artist(String firstname, String lastname) {
+	public Artist(String firstname, String lastname, Agency agency) {
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.agency = agency;
 	}
 
 	public Long getId() {

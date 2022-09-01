@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class AgencyService {
 	@Autowired
 	private AgencyRepository agencyRepository;
-		
+	
 	public List<Agency> getAll() {
 		List<Agency> agencies = new ArrayList<>();
 		
@@ -36,6 +36,10 @@ public class AgencyService {
 		Long indice = indice2;
 		
 		agencyRepository.deleteById(indice);
+	}
+	
+	public Agency getAgencyByName(String name) {
+		return agencyRepository.findByName(name);
 	}
 	
 }

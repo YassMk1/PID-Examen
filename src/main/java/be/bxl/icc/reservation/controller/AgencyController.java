@@ -1,7 +1,6 @@
 package be.bxl.icc.reservation.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +19,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import be.bxl.icc.reservation.model.Agency;
 import be.bxl.icc.reservation.model.AgencyService;
-import be.bxl.icc.reservation.model.Artist;
 
 
 @Controller
 public class AgencyController {
+	
 	@Autowired
 	AgencyService agencyService;
 
@@ -37,13 +36,27 @@ public class AgencyController {
 		
         return "agency/index";
     }
-	
+	/*
 	@GetMapping("/agencies/{id}")
     public String show(Model model, @PathVariable("id") String id) {
 	Agency agency = agencyService.getAgency(id);
 
 	model.addAttribute("agency", agency);
 	model.addAttribute("title", "Fiche d'une agence");
+		
+        return "agency/show";
+    }*/
+	
+	@GetMapping("/agencies/{indice}")
+    public String show2(Model model, @PathVariable("indice") String indice) {
+		Agency agency = new Agency ();
+		if (indice.chars().allMatch( Character::isDigit )) {
+			agency = agencyService.getAgency(indice);
+		} else {
+			agency = agencyService.getAgencyByName(indice);
+		}	
+		model.addAttribute("agency", agency);
+		model.addAttribute("title", "Fiche d'une agence");
 		
         return "agency/show";
     }
