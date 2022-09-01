@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Agency {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 		
 	@NotEmpty(message = "The agency name must not be empty.")

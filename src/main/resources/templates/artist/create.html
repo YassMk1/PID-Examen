@@ -29,7 +29,7 @@
 		        	<label>Agence:</label>
 					<select th:field="*{agency}">
 					  		<option value="default">Choisissez une agence</option>
-							<option th:each= "ag : ${agencies}" th:value="${ag}" 
+							<option th:each= "ag : ${agencies}" th:value="${ag.id}" 
 							th:text="${ag}" />
 					</select>
 					 <br><br>

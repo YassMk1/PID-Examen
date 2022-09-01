@@ -23,7 +23,7 @@ import lombok.Setter;
 @Table(name="artists")
 public class Artist {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotEmpty(message = "The firstname must not be empty.")
@@ -43,11 +43,7 @@ public class Artist {
 
 	protected Artist() {}
 
-	public Artist(String firstname, String lastname, Agency agency) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.agency = agency;
-	}
+
 
 	public Long getId() {
 		return id;
@@ -77,6 +73,12 @@ public class Artist {
 		return types;
 	}
 
+	public Artist(String firstname, String lastname, Agency idAgency) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.agency = idAgency;
+	}
+	
 	public Artist addType(Type type) {
 		if(!this.types.contains(type)) {
 			this.types.add(type);

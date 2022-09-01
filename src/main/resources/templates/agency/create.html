@@ -20,14 +20,6 @@
                			th:errors="*{name}" th:errorclass="fieldError"></p>
 		        </div>
 		        <div>
-					<select th:field="*{agency}">
-					  		<option value="default">Choisissez une agence</option>
-							<option th:each= "ag : ${agency}" th:value="${agency}" 
-							th:text="${agency}" />
-					</select>
-					 <br><br>
-				</div>
-		        <div>
 		        	<button type="submit" th:text="Modifier">Modifier</button>
 		        	<button type="reset" th:text="Réinitialiser">Réinitialiser</button>
 		        	<a th:href="@{/agencies}">Annuler</a>
