@@ -34,6 +34,10 @@ public class Agency {
 	private List<Artist> artists = new ArrayList<>();
 
 	public Agency () {}
+
+	public Agency(int id){
+		this.id= Long.valueOf(id);
+	}
 	
 	public List<Artist> getArtists() {
 		return artists;

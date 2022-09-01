@@ -26,9 +26,9 @@
                			th:errors="*{lastname}" th:errorclass="fieldError"></p>
 		        </div>
 		        <div>
-					<select th:field="*{agencies}">
+					<select th:field="*{idAgency}">
 					  		<option value="default">Choisissez une agence</option>
-							<option th:each= "ag : ${agencies}" th:value="${ag}" 
+							<option th:each= "ag : ${agencies}" th:value="${ag.id}"
 							th:text="${ag}" />
 					</select>
 					 <br><br>

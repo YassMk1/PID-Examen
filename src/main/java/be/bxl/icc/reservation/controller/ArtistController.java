@@ -29,6 +29,7 @@ public class ArtistController {
 
   @Autowired
   ArtistService service;
+  @Autowired
   AgencyService agencyService;
 
   @GetMapping("/artists")
@@ -54,12 +55,11 @@ public class ArtistController {
 
   @GetMapping("/artists/create")
   public String create(Model model) {
-    Artist artist = new Artist(null, null);
+    Artist artist = new Artist(null, null, null);
     List<Agency> agencies = agencyService.getAll();
 
     model.addAttribute("agencies", agencies );
     model.addAttribute("artist", artist);
-    
 
     return "artist/create";
   }
