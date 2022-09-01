@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+ layout:decorate="~{layouts/main}">
+<head>
+<title>Liste des agences</title>
+</head>
+<body>
+	<div class="container">
+	     <div layout:fragment="content">
+	        <h1 th:text="${title}"></h1>
+	        
+			<div class="actions">
+				<a th:href="@{/agencies/create}">Add new agency</a>
+	        </div>
+	
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Artist</th>
+                        <th colspan="3">Actions</th>
+					</tr>
+				</thead>
+	            <tbody>
+		            <tr th:each="agency : ${agencies}">
+		                <td th:text="${agency}">TestAgence</td>
+		                <td> 
+		                	<ul th:each="art : ${agency.artists}">
+		                		<li th:text="${art}"></li>
+		                	</ul>
+		                </td>
+		                <td><a th:href="@{/agencies/{id}(id=${agency.id})}">View</a></td>
+		                <td><a th:href="@{/agencies/{id}/edit(id=${agency.id})}">Edit</a></td>
+		                <td>
+	                    	<form th:id="|deleteForm-${agency.id}|" 
+			 					  	th:action="@{/agencies/{id}(id=${agency.id})}" th:method="delete">
+		                    		<a href="#" 
+								    th:onclick="|if(confirm('Confirm delete agency #${agency.id}')) 
+		                    		document.getElementById('deleteForm-${agency.id}').submit(); 
+		                    		return false;|">Delete</a>
+	                    	</form>
+	                    </td>
+		            </tr>
+	            </tbody>
+			</table>
+			
+			
+			<ol th:unless="${#lists.isEmpty(agencies)}">
+				<li th:each="agency : ${agencies}" th:text="${agency}"> agence
+					<table>
+                        <tbody>
+	                       <tr data-th-each="artist : ${agency.getArtists()}">
+	                           <td>test</td>
+	                           
+	                       </tr>
+                        </tbody>
+					</table>
+				</li>
+			</ol>
+	        
+	    </div>
+	</div>
+</body>
+</html>

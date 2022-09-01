@@ -18,6 +18,7 @@
 	                <tr>
 	                    <th>Firstname</th>
 	                    <th>Lastname</th>
+	                    <th>Agency</th>
 	                    <th colspan="2">Actions</th>
 	                </tr>
 	            </thead>
@@ -25,6 +26,7 @@
 	                <tr th:each="artist : ${artists}">
 	                    <td th:text="${artist.firstname}">Bob</td>
 	                    <td th:text="${artist.lastname}">Sull</td>
+	                    <td th:text="${artist.agency}">test</td>
 		       			<td><a th:href="@{/artists/{id}(id=${artist.id})}">View</a></td>
 	                    <td><a th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a></td>
 	                    <td>

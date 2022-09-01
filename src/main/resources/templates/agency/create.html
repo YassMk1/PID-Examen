@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+ layout:decorate="~{layouts/main}">
+<head>
+<title>Creation d'une agence</title>
+<style>
+.fieldError { color: red; }
+</style>
+</head>
+<body>
+	<div class="container">
+	     <div layout:fragment="content">
+	        <h1>Nouvelle agence</h1>
+	        
+	        <form th:action="@{/agencies/create}" th:object="${agency}" method="post">
+		        <div>
+		        	<label>Name:</label>
+		        	<input type="text" th:field="*{name}">
+					<p th:if="${#fields.hasErrors('name')}"
+               			th:errors="*{name}" th:errorclass="fieldError"></p>
+		        </div>
+		        <div>
+					<select th:field="*{agency}">
+					  		<option value="default">Choisissez une agence</option>
+							<option th:each= "ag : ${agency}" th:value="${agency}" 
+							th:text="${agency}" />
+					</select>
+					 <br><br>
+				</div>
+		        <div>
+		        	<button type="submit" th:text="Modifier">Modifier</button>
+		        	<button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+		        	<a th:href="@{/agencies}">Annuler</a>
+		        </div>
+		        
+		    </form>
+		    
+   	        <nav><a th:href="@{/agencies}">Retour à l'index</a></nav>
+	     </div>
+	</div>
+</body>
+</html>

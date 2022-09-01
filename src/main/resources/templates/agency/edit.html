@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+ layout:decorate="~{layouts/main}">
+<head>
+<title>Modification d'une agence</title>
+<style>
+.fieldError { color: red; }
+</style>
+</head>
+<body>
+	<div class="container">
+	     <div layout:fragment="content">
+	        <h1 th:text="${agency}">Agence</h1>
+	        
+	        <form th:action="@{/agencies/{id}/edit(id=${agency.id})}" th:object="${agency}" th:method="put">
+	        	<div>
+		    		<label>Id:</label> 
+		    		<span th:text="${agency.getId}">00</span>
+		    	</div>
+		    	<div>
+		      	<label>Name:</label>
+		       	<input type="text" th:field="*{name}">
+					<p th:if="${#fields.hasErrors('name')}"
+               			th:errors="*{name}" th:errorclass="fieldError"></p>
+		    	</div>
+	        	<button type="submit" th:text="Modifier">Modifier</button>
+		        <button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+		        <a th:href="${back}">Annuler</a>
+	        
+	        </form>
+		    
+   	        <nav><a th:href="@{/agencies}">Retour à l'index</a></nav>
+	     </div>
+	</div>
+</body>
+</html>

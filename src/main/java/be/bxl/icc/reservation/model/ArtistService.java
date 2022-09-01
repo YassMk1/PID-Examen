@@ -8,35 +8,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArtistService {
-	@Autowired
-	private ArtistRepository artistRepository;
-		
-	public List<Artist> getAllArtists() {
-		List<Artist> artists = new ArrayList<>();
-		
-		artistRepository.findAll().forEach(artists::add);
-		
-		return artists;
-	}
-	
-	public Artist getArtist(String id) {
-		int indice = Integer.parseInt(id);
-		
-		return artistRepository.findById(indice);
-	}
+  @Autowired
+  private ArtistRepository artistRepository;
 
-	public void addArtist(Artist artist) {
-		artistRepository.save(artist);
-	}
+  public List<Artist> getAllArtists() {
+    List<Artist> artists = new ArrayList<>();
 
-	public void updateArtist(Long long1, Artist artist) {
-		artistRepository.save(artist);
-	}
+    artistRepository.findAll().forEach(artists::add);
 
-	public void deleteArtist(Long indice2) {
-		Long indice = indice2;
-		
-		artistRepository.deleteById(indice);
-	}
+    return artists;
+  }
+
+  public Artist getArtist(String id) {
+    long indice = Long.parseLong(id);
+
+    return artistRepository.findById(indice);
+  }
+
+  public void addArtist(Artist artist) {
+    artistRepository.save(artist);
+  }
+
+  public void updateArtist(long id, Artist artist) {
+    artistRepository.save(artist);
+  }
+
+  public void deleteArtist(long id) {
+    artistRepository.deleteById(id);
+  }
 }
+
 

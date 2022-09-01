@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+ layout:decorate="~{layouts/main}">
+<head>
+<title>Fiche d'une agence</title>
+</head>
+<body>
+	<div class="container">
+	     <div layout:fragment="content">
+	        <h1 th:text="${agency}">Agence</h1>
+	        
+	        <h2>Liste des artistes</h2>
+	        <ul th:unless="${#lists.isEmpty(agency.artists)}">
+	        	<li th:each="artist : ${agency.artists}" th:text="${artist}">artiste</li>
+   	        </ul>
+			<div class="actions">
+				<a th:href="@{/agencies/{id}/edit(id=${agency.id})}">Edit</a>
+	        </div>
+			<form th:id="|deleteForm-${agency.id}|" 
+	   				th:action="@{/agencies/{id}(id=${agency.id})}" th:method="delete">
+             	    <a href="#" th:onclick="|if(confirm('Confirm delete agency #${agency.id}')) 
+             		document.getElementById('deleteForm-${agency.id}').submit(); 
+             		return false;|">Delete</a>
+             	</form>
+
+
+	        <nav><a th:href="@{/agencies}">Retour à l'index</a></nav>
+	     </div>
+	</div>
+</body>
+</html>
